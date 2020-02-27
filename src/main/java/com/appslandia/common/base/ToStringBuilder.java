@@ -550,7 +550,7 @@ public class ToStringBuilder {
 			argType = field.getType().getComponentType();
 
 		} else if (Collection.class.isAssignableFrom(field.getType())) {
-			argType = ReflectionUtils.getArgumentType(field.getGenericType());
+			argType = ReflectionUtils.getListArgType(field.getGenericType());
 		}
 		if (argType == null) {
 			return false;

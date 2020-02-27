@@ -167,7 +167,7 @@ public class ReflectionUtils {
 		}
 	}
 
-	public static Class<?> getArgumentType(Type genericType) {
+	public static Class<?> getListArgType(Type genericType) {
 		if (!(genericType instanceof ParameterizedType)) {
 			return null;
 		}
