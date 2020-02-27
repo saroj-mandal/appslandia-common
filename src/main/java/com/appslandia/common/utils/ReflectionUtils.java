@@ -182,6 +182,25 @@ public class ReflectionUtils {
 		return (Class<?>) type;
 	}
 
+	public static Class<?>[] getMapArgTypes(Type genericType) {
+		if (!(genericType instanceof ParameterizedType)) {
+			return null;
+		}
+		Type[] types = ((ParameterizedType) genericType).getActualTypeArguments();
+		if (types.length != 2) {
+			return null;
+		}
+		Type kt = types[0];
+		if (!(kt instanceof Class)) {
+			return null;
+		}
+		Type vt = types[1];
+		if (!(vt instanceof Class)) {
+			return null;
+		}
+		return new Class<?>[] { (Class<?>) kt, (Class<?>) vt };
+	}
+
 	public static <T> T newInstance(Class<T> clazz) throws ReflectionException {
 		try {
 			return clazz.getDeclaredConstructor(EMPTY_CLASSES).newInstance(EMPTY_OBJECTS);
